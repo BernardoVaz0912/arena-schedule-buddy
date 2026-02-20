@@ -77,18 +77,18 @@ export function WeekSchedule({ weekDates, bookings, arenaId, onSlotClick }: Week
                     onClick={() => onSlotClick(dateKey, time, booking)}
                     className={cn(
                       "min-h-[44px] p-1.5 rounded-md text-xs transition-all duration-150 border",
-                      "hover:ring-2 hover:ring-primary/30 hover:scale-[1.02] cursor-pointer",
+                      "cursor-pointer",
                       isToday && "bg-primary/[0.03]",
-                      !booking && "bg-arena-slot border-transparent hover:bg-accent",
+                      !booking && "bg-arena-slot border-transparent hover:bg-accent hover:ring-2 hover:ring-primary/30 hover:scale-[1.02]",
                       booking?.status === "booked" &&
-                        "bg-arena-booked/15 border-arena-booked/30 text-arena-header",
+                        "bg-arena-booked/15 border-arena-booked/30 text-arena-header hover:ring-2 hover:ring-arena-booked/50 hover:scale-[1.02]",
                       booking?.status === "blocked" &&
-                        "bg-arena-blocked/15 border-arena-blocked/30 text-muted-foreground"
+                        "bg-arena-blocked/15 border-arena-blocked/30 text-muted-foreground hover:ring-2 hover:ring-arena-blocked/50 hover:scale-[1.02]"
                     )}
                   >
                     {booking && (
                       <div className="truncate font-medium text-[11px] leading-tight">
-                        {booking.status === "blocked" ? "🚫 Bloqueado" : booking.clientName}
+                        {booking.status === "blocked" ? `🚫 ${booking.clientName}` : booking.clientName}
                       </div>
                     )}
                   </button>
