@@ -11,8 +11,8 @@ export interface Booking {
 }
 
 export const ARENAS = [
-  { id: "arena-1", name: "Arena 1", color: "hsl(152, 60%, 42%)" },
-  { id: "arena-2", name: "Arena 2", color: "hsl(210, 70%, 50%)" },
+  { id: "arena-1", name: "Arena Society", color: "hsl(152, 60%, 42%)" },
+  { id: "arena-2", name: "Arena Vôlei", color: "hsl(210, 70%, 50%)" },
 ] as const;
 
 export const TIME_SLOTS = [

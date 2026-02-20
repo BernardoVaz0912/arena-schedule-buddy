@@ -81,7 +81,7 @@ const Index = () => {
             </div>
             <div>
               <h1 className="text-xl font-bold text-foreground tracking-tight">
-                Arena Schedule
+                Arena Mix
               </h1>
               <p className="text-xs text-muted-foreground">
                 Gestão de horários
