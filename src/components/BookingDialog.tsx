@@ -70,12 +70,12 @@ export function BookingDialog({
 
         <div className="space-y-4 py-2">
           <div className="space-y-2">
-            <Label htmlFor="client">Nome do Cliente</Label>
+            <Label htmlFor="client">{status === "blocked" ? "Motivo do Bloqueio" : "Nome do Cliente"}</Label>
             <Input
               id="client"
               value={clientName}
               onChange={(e) => setClientName(e.target.value)}
-              placeholder="Ex: João Silva"
+              placeholder={status === "blocked" ? "Ex: Manutenção" : "Ex: João Silva"}
               autoFocus
             />
           </div>
