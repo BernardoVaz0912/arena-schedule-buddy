@@ -6,87 +6,87 @@
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 220 20% 10%;
+    --background: 0 0% 96%;
+    --foreground: 0 0% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 152 60% 42%;
+    --primary: 27 95% 53%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 92%;
-    --secondary-foreground: 220 20% 20%;
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 220 14% 95%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 152 40% 92%;
-    --accent-foreground: 152 60% 25%;
+    --accent: 27 60% 93%;
+    --accent-foreground: 27 90% 30%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 89%;
-    --input: 220 14% 89%;
-    --ring: 152 60% 42%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 27 95% 53%;
 
     --radius: 0.625rem;
 
-    --sidebar-background: 220 20% 97%;
-    --sidebar-foreground: 220 20% 10%;
-    --sidebar-primary: 152 60% 42%;
+    --sidebar-background: 0 0% 96%;
+    --sidebar-foreground: 0 0% 8%;
+    --sidebar-primary: 27 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 152 40% 92%;
-    --sidebar-accent-foreground: 152 60% 25%;
-    --sidebar-border: 220 14% 89%;
-    --sidebar-ring: 152 60% 42%;
+    --sidebar-accent: 27 60% 93%;
+    --sidebar-accent-foreground: 27 90% 30%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 27 95% 53%;
 
-    /* Custom tokens */
-    --arena-available: 152 60% 42%;
-    --arena-booked: 38 92% 50%;
-    --arena-blocked: 0 0% 75%;
-    --arena-slot-bg: 220 14% 96%;
-    --arena-header: 220 20% 14%;
+    /* Custom arena tokens */
+    --arena-available: 27 95% 53%;
+    --arena-booked: 142 70% 45%;
+    --arena-blocked: 0 65% 50%;
+    --arena-slot-bg: 0 0% 96%;
+    --arena-header: 0 0% 8%;
   }
 
   .dark {
-    --background: 220 20% 7%;
-    --foreground: 220 10% 92%;
+    --background: 0 0% 6%;
+    --foreground: 0 0% 93%;
 
-    --card: 220 18% 11%;
-    --card-foreground: 220 10% 92%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 93%;
 
-    --popover: 220 18% 11%;
-    --popover-foreground: 220 10% 92%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 93%;
 
-    --primary: 152 60% 45%;
+    --primary: 27 95% 53%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 16%;
-    --secondary-foreground: 220 10% 85%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 85%;
 
-    --muted: 220 14% 16%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 152 30% 15%;
-    --accent-foreground: 152 60% 70%;
+    --accent: 27 40% 15%;
+    --accent-foreground: 27 90% 70%;
 
     --destructive: 0 62% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 14% 18%;
-    --input: 220 14% 18%;
-    --ring: 152 60% 45%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 27 95% 53%;
 
-    --arena-available: 152 60% 45%;
-    --arena-booked: 38 92% 50%;
-    --arena-blocked: 220 10% 30%;
-    --arena-slot-bg: 220 14% 14%;
-    --arena-header: 220 20% 95%;
+    --arena-available: 27 95% 53%;
+    --arena-booked: 142 70% 45%;
+    --arena-blocked: 0 55% 40%;
+    --arena-slot-bg: 0 0% 12%;
+    --arena-header: 0 0% 95%;
   }
 }
 

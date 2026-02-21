@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { CalendarDays, Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
+import logoArenaMix from "@/assets/logo-arena-mix.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -78,9 +79,7 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-8">
         {/* Logo */}
         <div className="flex flex-col items-center gap-3">
-          <div className="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
-            <CalendarDays className="h-7 w-7 text-primary-foreground" />
-          </div>
+          <img src={logoArenaMix} alt="Arena Mix" className="h-20 w-20 rounded-2xl object-cover shadow-lg" />
           <div className="text-center">
             <h1 className="text-2xl font-bold text-foreground tracking-tight">Arena Mix</h1>
             <p className="text-sm text-muted-foreground mt-1">Gestão de horários</p>
