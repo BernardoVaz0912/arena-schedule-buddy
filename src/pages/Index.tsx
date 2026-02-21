@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, LogOut } from "lucide-react";
+import { ChevronLeft, ChevronRight, LogOut, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 import { useAuth } from "@/hooks/useAuth";
 import logoArenaMix from "@/assets/logo-arena-mix.jpg";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ import {
 
 const Index = () => {
   const { signOut } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [bookings, setBookings] = useState<Booking[]>(() => generateSampleBookings());
   const [activeArena, setActiveArena] = useState<string>(ARENAS[0].id);
@@ -99,6 +101,9 @@ const Index = () => {
               <span className="h-2 w-2 rounded-full bg-arena-blocked" />
               {blockedCount} bloqueios
             </Badge>
+            <Button variant="ghost" size="icon" onClick={toggleTheme} title="Alternar tema">
+              {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            </Button>
             <Button variant="ghost" size="icon" onClick={signOut} title="Sair">
               <LogOut className="h-4 w-4" />
             </Button>
