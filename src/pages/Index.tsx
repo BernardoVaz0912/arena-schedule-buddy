@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, CalendarDays, LogOut } from "lucide-react";
+import { ChevronLeft, ChevronRight, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import logoArenaMix from "@/assets/logo-arena-mix.jpg";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -78,9 +79,7 @@ const Index = () => {
       <header className="border-b bg-card">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
-              <CalendarDays className="h-5 w-5 text-primary-foreground" />
-            </div>
+            <img src={logoArenaMix} alt="Arena Mix" className="h-10 w-10 rounded-lg object-cover" />
             <div>
               <h1 className="text-xl font-bold text-foreground tracking-tight">
                 Arena Mix
