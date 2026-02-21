@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, CalendarDays, Plus } from "lucide-react";
+import { ChevronLeft, ChevronRight, CalendarDays, LogOut } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +15,7 @@ import {
 } from "@/lib/schedule-data";
 
 const Index = () => {
+  const { signOut } = useAuth();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [bookings, setBookings] = useState<Booking[]>(() => generateSampleBookings());
   const [activeArena, setActiveArena] = useState<string>(ARENAS[0].id);
@@ -98,6 +100,9 @@ const Index = () => {
               <span className="h-2 w-2 rounded-full bg-arena-blocked" />
               {blockedCount} bloqueios
             </Badge>
+            <Button variant="ghost" size="icon" onClick={signOut} title="Sair">
+              <LogOut className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </header>
