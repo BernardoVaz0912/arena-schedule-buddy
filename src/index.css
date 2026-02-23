@@ -49,6 +49,7 @@
     --arena-available: 27 95% 53%;
     --arena-booked: 142 70% 45%;
     --arena-blocked: 0 65% 50%;
+    --arena-fixed: 220 70% 50%;
     --arena-slot-bg: 0 0% 96%;
     --arena-header: 0 0% 8%;
   }
@@ -85,6 +86,7 @@
     --arena-available: 27 95% 53%;
     --arena-booked: 142 70% 45%;
     --arena-blocked: 0 55% 40%;
+    --arena-fixed: 220 60% 55%;
     --arena-slot-bg: 0 0% 12%;
     --arena-header: 0 0% 95%;
   }

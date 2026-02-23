@@ -68,7 +68,7 @@ const Index = () => {
     (b) => b.arenaId === activeArena && weekKey.includes(b.date)
   );
   const bookedCount = weekBookings.filter((b) => b.status === "booked").length;
-  const blockedCount = weekBookings.filter((b) => b.status === "blocked").length;
+  const fixedCount = weekBookings.filter((b) => b.status === "fixed").length;
 
   const monthLabel = weekDates[0].toLocaleDateString("pt-BR", {
     month: "long",
@@ -98,8 +98,8 @@ const Index = () => {
               {bookedCount} reservas
             </Badge>
             <Badge variant="secondary" className="hidden sm:flex gap-1">
-              <span className="h-2 w-2 rounded-full bg-arena-blocked" />
-              {blockedCount} bloqueios
+              <span className="h-2 w-2 rounded-full bg-arena-fixed" />
+              {fixedCount} fixos
             </Badge>
             <Button variant="ghost" size="icon" onClick={toggleTheme} title="Alternar tema">
               {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
@@ -111,41 +111,41 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6 space-y-6">
+      <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* Navigation + Arena Tabs */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex flex-col gap-3 sm:gap-4">
           <Tabs
             value={activeArena}
             onValueChange={setActiveArena}
-            className="w-full sm:w-auto"
+            className="w-full"
           >
-            <TabsList>
+            <TabsList className="w-full sm:w-auto">
               {ARENAS.map((arena) => (
-                <TabsTrigger key={arena.id} value={arena.id} className="min-w-[100px]">
+                <TabsTrigger key={arena.id} value={arena.id} className="flex-1 sm:flex-none sm:min-w-[100px]">
                   {arena.name}
                 </TabsTrigger>
               ))}
             </TabsList>
           </Tabs>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center sm:justify-end gap-2">
             <Button variant="outline" size="sm" onClick={goToToday}>
               Hoje
             </Button>
-            <Button variant="outline" size="icon" onClick={() => navigateWeek(-1)}>
+            <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => navigateWeek(-1)}>
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            <span className="text-sm font-semibold capitalize min-w-[160px] text-center">
+            <span className="text-sm font-semibold capitalize min-w-[140px] sm:min-w-[160px] text-center">
               {monthLabel}
             </span>
-            <Button variant="outline" size="icon" onClick={() => navigateWeek(1)}>
+            <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => navigateWeek(1)}>
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
         </div>
 
         {/* Schedule Grid */}
-        <div className="bg-card rounded-xl border p-4 shadow-sm">
+        <div className="bg-card rounded-xl border p-2 sm:p-4 shadow-sm">
           <WeekSchedule
             weekDates={weekDates}
             bookings={bookings}
@@ -155,7 +155,7 @@ const Index = () => {
         </div>
 
         {/* Legend */}
-        <div className="flex items-center gap-6 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-muted-foreground">
           <div className="flex items-center gap-1.5">
             <span className="h-3 w-3 rounded-sm bg-arena-slot border" />
             Disponível
@@ -165,8 +165,8 @@ const Index = () => {
             Reservado
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="h-3 w-3 rounded-sm bg-arena-blocked/30 border border-arena-blocked/40" />
-            Bloqueado
+            <span className="h-3 w-3 rounded-sm bg-arena-fixed/30 border border-arena-fixed/40" />
+            Fixo
           </div>
         </div>
       </main>
