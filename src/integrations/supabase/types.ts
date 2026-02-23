@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      bookings: {
+        Row: {
+          arena_id: string
+          client_name: string
+          created_at: string
+          date: string
+          id: string
+          notes: string | null
+          status: string
+          time: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          arena_id: string
+          client_name: string
+          created_at?: string
+          date: string
+          id?: string
+          notes?: string | null
+          status?: string
+          time: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          arena_id?: string
+          client_name?: string
+          created_at?: string
+          date?: string
+          id?: string
+          notes?: string | null
+          status?: string
+          time?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
