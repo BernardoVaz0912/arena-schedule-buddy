@@ -54,6 +54,7 @@ export default {
           available: "hsl(var(--arena-available))",
           booked: "hsl(var(--arena-booked))",
           blocked: "hsl(var(--arena-blocked))",
+          fixed: "hsl(var(--arena-fixed))",
           slot: "hsl(var(--arena-slot-bg))",
           header: "hsl(var(--arena-header))",
         },
