@@ -9,6 +9,16 @@ import { Badge } from "@/components/ui/badge";
 import { WeekSchedule } from "@/components/WeekSchedule";
 import { BookingDialog } from "@/components/BookingDialog";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
   ARENAS,
   getWeekDates,
   generateSampleBookings,
@@ -28,7 +38,7 @@ const Index = () => {
   const [editingBooking, setEditingBooking] = useState<Booking | null>(null);
   const [slotDate, setSlotDate] = useState("");
   const [slotTime, setSlotTime] = useState("");
-
+  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
   const weekDates = getWeekDates(currentDate);
 
   const navigateWeek = (dir: number) => {
@@ -104,7 +114,7 @@ const Index = () => {
             <Button variant="ghost" size="icon" onClick={toggleTheme} title="Alternar tema">
               {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </Button>
-            <Button variant="ghost" size="icon" onClick={signOut} title="Sair">
+            <Button variant="ghost" size="icon" onClick={() => setLogoutDialogOpen(true)} title="Sair">
               <LogOut className="h-4 w-4" />
             </Button>
           </div>
@@ -182,6 +192,22 @@ const Index = () => {
         defaultDate={slotDate}
         defaultTime={slotTime}
       />
+
+      {/* Logout Confirmation */}
+      <AlertDialog open={logoutDialogOpen} onOpenChange={setLogoutDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Deseja sair?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Você será desconectado da sua conta. Deseja continuar?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={signOut}>Sim, sair</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
