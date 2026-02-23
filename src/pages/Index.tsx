@@ -21,16 +21,16 @@ import {
 import {
   ARENAS,
   getWeekDates,
-  generateSampleBookings,
   formatDateKey,
   type Booking,
 } from "@/lib/schedule-data";
+import { useBookings } from "@/hooks/useBookings";
 
 const Index = () => {
   const { signOut } = useAuth();
   const { theme, toggleTheme } = useTheme();
+  const { bookings, saveBooking, deleteBooking } = useBookings();
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [bookings, setBookings] = useState<Booking[]>(() => generateSampleBookings());
   const [activeArena, setActiveArena] = useState<string>(ARENAS[0].id);
 
   // Dialog state
@@ -62,15 +62,12 @@ const Index = () => {
   );
 
   const handleSave = useCallback((booking: Booking) => {
-    setBookings((prev) => {
-      const filtered = prev.filter((b) => b.id !== booking.id);
-      return [...filtered, booking];
-    });
-  }, []);
+    saveBooking(booking);
+  }, [saveBooking]);
 
   const handleDelete = useCallback((id: string) => {
-    setBookings((prev) => prev.filter((b) => b.id !== id));
-  }, []);
+    deleteBooking(id);
+  }, [deleteBooking]);
 
   // Stats
   const weekKey = weekDates.map((d) => formatDateKey(d));
