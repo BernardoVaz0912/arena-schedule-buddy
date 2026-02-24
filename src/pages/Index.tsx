@@ -128,7 +128,15 @@ const Index = () => {
           >
             <TabsList className="w-full sm:w-auto">
               {ARENAS.map((arena) => (
-                <TabsTrigger key={arena.id} value={arena.id} className="flex-1 sm:flex-none sm:min-w-[100px]">
+                <TabsTrigger
+                  key={arena.id}
+                  value={arena.id}
+                  className={`flex-1 sm:flex-none sm:min-w-[100px] ${
+                    arena.id === "arena-1"
+                      ? "data-[state=active]:bg-emerald-100 data-[state=active]:text-emerald-800 dark:data-[state=active]:bg-emerald-900/40 dark:data-[state=active]:text-emerald-300"
+                      : "data-[state=active]:bg-amber-100 data-[state=active]:text-amber-800 dark:data-[state=active]:bg-amber-900/40 dark:data-[state=active]:text-amber-300"
+                  }`}
+                >
                   {arena.name}
                 </TabsTrigger>
               ))}
