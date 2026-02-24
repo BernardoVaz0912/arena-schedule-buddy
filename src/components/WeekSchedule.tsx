@@ -27,7 +27,7 @@ export function WeekSchedule({ weekDates, bookings, arenaId, onSlotClick }: Week
   const today = formatDateKey(new Date());
 
   return (
-    <div key={arenaId} className="overflow-x-auto -mx-2 px-2 animate-slide-fade-in">
+    <div key={`${arenaId}-${formatDateKey(weekDates[0])}`} className="overflow-x-auto -mx-2 px-2 animate-slide-fade-in">
       <div className="min-w-[600px]">
         {/* Header */}
         <div className="grid grid-cols-[56px_repeat(7,1fr)] sm:grid-cols-[72px_repeat(7,1fr)] gap-px mb-px">
