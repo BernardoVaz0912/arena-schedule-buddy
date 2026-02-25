@@ -18,11 +18,34 @@ interface WeekScheduleProps {
 export function WeekSchedule({ weekDates, bookings, arenaId, onSlotClick }: WeekScheduleProps) {
   const bookingMap = useMemo(() => {
     const map = new Map<string, Booking>();
-    bookings
-      .filter((b) => b.arenaId === arenaId)
+    const arenaBookings = bookings.filter((b) => b.arenaId === arenaId);
+
+    // First pass: add all non-fixed bookings
+    arenaBookings
+      .filter((b) => b.status !== "fixed")
       .forEach((b) => map.set(`${b.date}-${b.time}`, b));
+
+    // Second pass: project fixed bookings onto matching weekdays
+    const fixedBookings = arenaBookings.filter((b) => b.status === "fixed");
+    fixedBookings.forEach((b) => {
+      const origDate = new Date(b.date + "T00:00:00");
+      const origDay = origDate.getDay(); // 0=Sun, 6=Sat
+
+      weekDates.forEach((wd) => {
+        if (wd.getDay() !== origDay) return;
+        // Only show on weeks >= original date
+        if (wd < origDate) return;
+        const dateKey = formatDateKey(wd);
+        const key = `${dateKey}-${b.time}`;
+        // Don't overwrite a non-fixed booking on the same slot
+        if (!map.has(key)) {
+          map.set(key, { ...b, date: dateKey });
+        }
+      });
+    });
+
     return map;
-  }, [bookings, arenaId]);
+  }, [bookings, arenaId, weekDates]);
 
   const today = formatDateKey(new Date());
 
