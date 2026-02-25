@@ -69,13 +69,29 @@ const Index = () => {
     deleteBooking(id);
   }, [deleteBooking]);
 
-  // Stats
+  // Stats — project fixed bookings onto the current week
   const weekKey = weekDates.map((d) => formatDateKey(d));
-  const weekBookings = bookings.filter(
-    (b) => b.arenaId === activeArena && weekKey.includes(b.date)
-  );
-  const bookedCount = weekBookings.filter((b) => b.status === "booked").length;
-  const fixedCount = weekBookings.filter((b) => b.status === "fixed").length;
+  const arenaBookings = bookings.filter((b) => b.arenaId === activeArena);
+  const bookedCount = arenaBookings.filter(
+    (b) => b.status === "booked" && weekKey.includes(b.date)
+  ).length;
+
+  // Count unique fixed slots projected onto this week
+  const fixedCount = (() => {
+    const fixedSlots = new Set<string>();
+    arenaBookings
+      .filter((b) => b.status === "fixed")
+      .forEach((b) => {
+        const origDate = new Date(b.date + "T00:00:00");
+        const origDay = origDate.getDay();
+        weekDates.forEach((wd) => {
+          if (wd.getDay() === origDay && wd >= origDate) {
+            fixedSlots.add(`${formatDateKey(wd)}-${b.time}`);
+          }
+        });
+      });
+    return fixedSlots.size;
+  })();
 
   const monthLabel = weekDates[0].toLocaleDateString("pt-BR", {
     month: "long",
